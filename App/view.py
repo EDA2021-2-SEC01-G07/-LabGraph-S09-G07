@@ -24,7 +24,7 @@
  *
  """
 
-
+import time 
 import sys
 import config
 import threading
@@ -83,7 +83,10 @@ def optionThree(cont):
 
 
 def optionFour(cont, initialStation):
+    start_time = time.process_time()
     controller.minimumCostPaths(cont, initialStation)
+    end_time=(time.process_time() - start_time)*1000
+    print("The processing time is: ",end_time, " ms.")
 
 
 def optionFive(cont, destStation):
@@ -94,6 +97,7 @@ def optionFive(cont, destStation):
 
 
 def optionSix(cont, destStation):
+    start_time = time.process_time()
     path = controller.minimumCostPath(cont, destStation)
     if path is not None:
         pathlen = stack.size(path)
@@ -103,6 +107,8 @@ def optionSix(cont, destStation):
             print(stop)
     else:
         print('No hay camino')
+    end_time=(time.process_time() - start_time)*1000
+    print("The processing time is: ",end_time, " ms.")
 
 
 def optionSeven(cont):
